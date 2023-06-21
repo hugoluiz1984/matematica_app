@@ -1,21 +1,34 @@
-import React from 'react'
-import { navLinks } from './../../utils/data';
-import { useRouter } from 'next/router'
+"use client";
+import React from "react";
+import { navLinks } from "./../../utils/data";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function NavBar() {
-    const router = useRouter();
+  const router = useRouter();
 
-    let caminho = router.pathname
+  let caminho = usePathname();
   return (
-    <div>
-        <ul className="nav nav-pills">
-            { navLinks.map((link, index)=>{
-               return (
-                <li className="nav-item" key={index}>
-                    <a href={link.path} className={caminho==link.path?'nav-link active':"nav-link"}>{link.label}</a>
-                </li>)
-            })}
-        </ul>
-    </div>
-  )
+    <main>
+      <ul className="flex">
+        {navLinks.map((link, index) => {
+          return (
+            <li
+              className="text-black-300 hover:text-gray-500 px-3 py-2"
+              key={index}
+            >
+              {console.log(link.path, caminho)}
+              <a
+                href={link.path}
+                className={
+                  caminho == link.path ? "text-gray-600" : "text-black-300"
+                }
+              >
+                {link.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </main>
+  );
 }
