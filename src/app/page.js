@@ -28,13 +28,6 @@ export default function Home() {
           estatística.
         </p>
         <p>
-          Neste teste, você terá a oportunidade de desafiar e aprimorar seus
-          conhecimentos em matemática. Aqui, você encontrará uma variedade de
-          questões que abrangem diferentes áreas da matemática, desde aritmética
-          básica até problemas mais complexos de álgebra, geometria e
-          estatística.
-        </p>
-        <p>
           Você terá um tempo limite para responder a cada pergunta, o que
           adicionará uma dose de emoção ao teste. No entanto, nosso principal
           foco é encorajá-lo(a) a pensar logicamente, aplicar estratégias de

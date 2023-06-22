@@ -30,3 +30,13 @@ export const operators = ["+", "-", "x", "÷"];
 export const comparators = [">", "=", "<"];
 
 export const Resultados = [];
+
+export const Permitidos = (event) => {
+  const charCode = event.which ? event.which : event.keyCode;
+  const char = String.fromCharCode(charCode);
+  const allowedChars = /[0-9+-./b]/; // Permite apenas números
+  //const permitodosC = [96,97,98,99,100,101,102,103,104,105,49,50,51,52,53,54,55,56,57,48,189,49]
+  if (!allowedChars.test(char)) {
+    event.preventDefault();
+  }
+};

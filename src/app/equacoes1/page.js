@@ -82,7 +82,7 @@ export default function Fracoes() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
-        <h1 className="text-3xl">Frações</h1>
+        <h1 className="text-3xl">Equações do 1º Grau</h1>
       </div>
       <div className="text-center p-10 text-3xl">
         {`(${number1})/${number2} + (${number3})/${number4} = `}

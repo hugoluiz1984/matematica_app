@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Resultados } from "@/utils/data";
+import { Resultados, Permitidos } from "@/utils/data";
 //import { Button, Link } from "@nextui-org/react";
 
 export default function Soma() {
@@ -63,7 +63,7 @@ export default function Soma() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
-        <h1 className="text-3xl">Subtração</h1>
+        <h1 className="text-3xl">Divisão</h1>
       </div>
       <div className="text-center p-10 text-3xl">
         {`(${number1 * number2}) ÷ (${number1}) = `}
@@ -71,6 +71,7 @@ export default function Soma() {
           className="w-24 text-center "
           onChange={handleChange}
           value={resp}
+          type="number"
         ></input>
       </div>
       <button
