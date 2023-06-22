@@ -1,33 +1,25 @@
+import { ButtonsLinks } from "../utils/data";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
       <h1 className="text-3xl">Matemática</h1>
       <div className="flex flex-wrap p-6 gap-2 justify-center">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/fracoes">Soma</a>
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/sofracoesma">Subtração</a>
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/fracoes">Multiplicação</a>
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/fracoes">Divisão</a>
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/fracoes">Frações</a>
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/fracoes">Equações do 1º Grau</a>
-        </button>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-          <a href="/fracoes">Equações do 2º Grau</a>
-        </button>
+        {ButtonsLinks.map((link, index) => {
+          return (
+            <button
+              key={index}
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-0 rounded w-44"
+            >
+              <a href={link.path}>{link.label}</a>
+            </button>
+          );
+        })}
       </div>
 
       <div>
-        <p>Bem-vindo(a) ao Teste de Conhecimentos em Matemática! </p>
+        <p className="p-4 text-center">
+          Bem-vindo(a) ao Teste de Conhecimentos em Matemática!{" "}
+        </p>
         <p>
           Neste teste, você terá a oportunidade de desafiar e aprimorar seus
           conhecimentos em matemática. Aqui, você encontrará uma variedade de

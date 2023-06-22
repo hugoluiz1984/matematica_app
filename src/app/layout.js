@@ -16,8 +16,8 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR">
       <body className={inter.className}>
         <main>
-          <header class="bg-white-800 text-black py-4">
-            <div class=" flex container mx-auto px-4 items-center justify-between">
+          <header className="bg-white-800 text-black py-4">
+            <div className=" flex container mx-auto px-4 items-center justify-between">
               <Image
                 src="/logo.png"
                 alt="Gama Logo"
@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
               <NavBar navLinks={navLinks} />
             </div>
           </header>
-          <div class="container mx-auto px-4">{children}</div>
-          <footer class="bg-white-800 text-black py-4">
-            <div class="container mx-auto px-4">
+          <div className="container mx-auto px-4">{children}</div>
+          <footer className="bg-white-800 text-black py-4">
+            <div className="container mx-auto px-4">
               <a className="flex place-items-center gap-2 p-8  lg:p-0 items-end justify-center">
                 By{" Hugo Gama in "}
                 <Image

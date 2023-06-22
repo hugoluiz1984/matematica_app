@@ -1,12 +1,22 @@
 export const navLinks = [
   { label: "Home", path: "/" },
-  { label: "Soma", path: "/fracoes" },
-  { label: "Subtração", path: "/" },
-  { label: "Multiplicação", path: "/fracoes" },
-  { label: "Divisão", path: "/" },
+  { label: "Soma", path: "/soma" },
+  { label: "Subtração", path: "/subtracao" },
+  { label: "Multiplicação", path: "/multi" },
+  { label: "Divisão", path: "/divisao" },
   { label: "Frações", path: "/fracoes" },
-  { label: "Equações do 1º Grau", path: "/" },
-  { label: "Equações do 2º Grau", path: "/fracoes" },
+  { label: "Equações do 1º Grau", path: "/equacoes1" },
+  { label: "Equações do 2º Grau", path: "/equacoes2" },
+];
+
+export const ButtonsLinks = [
+  { label: "Soma", path: "/soma" },
+  { label: "Subtração", path: "/subtracao" },
+  { label: "Multiplicação", path: "/multi" },
+  { label: "Divisão", path: "/divisao" },
+  { label: "Frações", path: "/fracoes" },
+  { label: "Equações do 1º Grau", path: "/equacoes1" },
+  { label: "Equações do 2º Grau", path: "/equacoes2" },
 ];
 
 export const operators = ["+", "-", "x", "÷"];
