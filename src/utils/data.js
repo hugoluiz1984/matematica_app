@@ -51,6 +51,7 @@ export const eFracao = (resp, fract) => {
     const RespEmFracao = fraction;
     return RespEmFracao;
   }
+  return resp;
 };
 function decimalToFraction(decimal) {
   const fraction = new Fraction(decimal);

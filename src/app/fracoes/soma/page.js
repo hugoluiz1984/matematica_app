@@ -93,6 +93,7 @@ export default function Fracoes() {
       const RespEmFracao = fraction;
       return RespEmFracao;
     }
+    return resp;
   };
 
   return (

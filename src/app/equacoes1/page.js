@@ -55,6 +55,7 @@ export default function Fracoes() {
       const RespEmFracao = fraction;
       return RespEmFracao;
     }
+    return resp;
   };
 
   function decimalToFraction(decimal) {
@@ -73,13 +74,12 @@ export default function Fracoes() {
       let fract = 0;
       let newResp = 0;
       val = eFracao(val, fract);
-      console.log(val);
+      console.log((number4 - number2) / (number1 - number3), val);
       newResp = eFracao(resp, fract);
-      console.log(`${val}`);
       tempExp = {
         expression: `(${number1}X)+(${number2}) = (${number3}X)+(${number4})`,
         resp: resp,
-        value: val.toString(),
+        value: val,
       };
 
       Resultados.push(tempExp);
