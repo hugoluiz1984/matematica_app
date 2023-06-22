@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
 import Fraction from "fraction.js";
 import FracScreen from "@/components/FracScreen";
+import FracScreenResp from "@/components/FracScreenResp";
 
 export default function Fracoes() {
   const [expression, setExpression] = useState("");
@@ -10,9 +11,9 @@ export default function Fracoes() {
   const [number2, setNumber2] = useState(0);
   const [number3, setNumber3] = useState(0);
   const [number4, setNumber4] = useState(0);
+  const [resp, setResp] = useState("");
   const [respNum, setRespNum] = useState("");
   const [respDen, setRespDen] = useState("");
-  const [resp, setResp] = useState("");
   const [resultsScreen, setResultsScreen] = useState(false);
   const [cont, setCont] = useState(0);
 
@@ -34,7 +35,7 @@ export default function Fracoes() {
     const num2 = getRandomIntInclusive(1, 10);
     const num3 = getRandomIntInclusive(-10, 10);
     const num4 = getRandomIntInclusive(1, 10);
-    const operator = "÷";
+    const operator = "0";
     setNumber1(num1);
     setNumber2(num2);
     setNumber3(num3);
@@ -53,24 +54,25 @@ export default function Fracoes() {
   };
 
   const verificar = () => {
-    respNum == "" || respDen == "" ? setResp(respNum / respDen) : setResp("");
+    respNum != "" || respDen != "" ? setResp(respNum / respDen) : setResp("");
     if (resp !== "") {
-      let val = (number1 / number2) * (number4 / number3);
+      let val = (number1 * number4) / (number3 * number2);
       let tempExp;
       let fract = 0;
-      if (!Number.isInteger(val)) {
-        const decimal = val;
-        const fraction = decimalToFraction(decimal);
-        console.log(`${decimal} convertido para fração: ${fraction}`);
-        fract = fraction;
-        val = fraction;
-      }
-
+      let newResp = 0;
+      val = eFracao(val, fract);
+      console.log(val);
+      newResp = eFracao(resp, fract);
       console.log(`${val}`);
       tempExp = {
-        expression: `(${number1})/(${number2}) ÷ (${number3})/(${number4}) = ${val}`,
-        resp: resp,
-        value: val.toString(),
+        num1: number1,
+        num2: number2,
+        num3: number3,
+        num4: number4,
+        operator: "x",
+        expression: `(${number1})/${number2} ÷ (${number3})/${number4} = ${val}`,
+        resp: newResp,
+        value: val,
       };
 
       Resultados.push(tempExp);
@@ -78,10 +80,19 @@ export default function Fracoes() {
       getNum();
       setCont(cont + 1);
       setResp("");
+      setRespNum("");
+      setRespDen("");
     }
   };
-  const handleChange = (e) => {
-    setResp(e.target.value);
+  const eFracao = (resp, fract) => {
+    if (!Number.isInteger(resp)) {
+      const decimal = resp;
+      const fraction = decimalToFraction(decimal);
+      console.log(`${decimal} convertido para fração: ${fraction}`);
+      fract = fraction;
+      const RespEmFracao = fraction;
+      return RespEmFracao;
+    }
   };
 
   return (
@@ -108,16 +119,7 @@ export default function Fracoes() {
       </button>
 
       <div className="text-center p-10 text-2xl">
-        {Resultados.map((item, index) => {
-          return (
-            <div key={index} className="flex ">
-              <div className="p-1 w-100">{item.expression}</div>
-              <div className="p-1">
-                {item.value == item.resp ? " ✅" : " ❌"}
-              </div>
-            </div>
-          );
-        })}
+        {Resultados && <FracScreenResp Resultados={Resultados} />}
       </div>
     </main>
   );
