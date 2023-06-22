@@ -2,15 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
 import Fraction from "fraction.js";
-import ResultsEqua from "@/components/ResultsEqua";
+import ResultsEqua2 from "@/components/ResultsEqua2";
+import { equa2 } from "@/utils/equacao2grau";
 
 export default function Fracoes() {
   const [expression, setExpression] = useState("");
   const [number1, setNumber1] = useState(0);
   const [number2, setNumber2] = useState(0);
   const [number3, setNumber3] = useState(0);
-  const [number4, setNumber4] = useState(0);
   const [resp, setResp] = useState("");
+  const [resp1, setResp1] = useState("");
   const [resultsScreen, setResultsScreen] = useState(false);
   const [cont, setCont] = useState(0);
 
@@ -29,21 +30,13 @@ export default function Fracoes() {
 
   const getNum = () => {
     const num1 = getRandomIntInclusive(-10, 10);
-    const num2 = getRandomIntInclusive(1, 10);
+    const num2 = getRandomIntInclusive(-10, 10);
     const num3 = getRandomIntInclusive(-10, 10);
-    const num4 = getRandomIntInclusive(1, 10);
-    const operator = "=";
-    if (num1 == num3) {
-      setNumber3(num3 - 1);
-    } else {
-      setNumber3(num3);
-    }
+
     setNumber1(num1);
     setNumber2(num2);
-    setNumber4(num4);
-    setExpression(
-      `(${number1}X)+(${number2}) ${operator} (${number3}X)+(${number4})`
-    );
+    setNumber3(num3);
+    setExpression(`(${number1})X²+(${number2})X +(${number3}) = 0`);
     setResp("");
   };
   const eFracao = (resp, fract) => {
@@ -67,45 +60,58 @@ export default function Fracoes() {
   };
 
   const verificar = () => {
-    if (resp !== "") {
-      let val = (number4 - number2) / (number1 - number3);
+    if (resp !== "" || resp1 !== "") {
+      const equa = equa2(number1, number2, number3);
+      console.log(equa);
+      let val = equa;
       let tempExp;
       let fract = 0;
       let newResp = 0;
-      val = eFracao(val, fract);
-      console.log(val);
+      let newResp1 = 0;
+      //val = eFracao(val, fract);
       newResp = eFracao(resp, fract);
-      console.log(`${val}`);
+      newResp1 = eFracao(resp1, fract);
       tempExp = {
-        expression: `(${number1}X)+(${number2}) = (${number3}X)+(${number4})`,
+        expression: `(${number1})X²+(${number2})X +(${number3}) = 0`,
         resp: resp,
-        value: val.toString(),
+        resp1: resp1,
+        value: equa,
       };
-
       Resultados.push(tempExp);
-      console.log(Resultados);
       getNum();
       setCont(cont + 1);
       setResp("");
+      setResp1("");
     }
   };
   const handleChange = (e) => {
     setResp(e.target.value);
   };
+  const handleChange1 = (e) => {
+    setResp1(e.target.value);
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
-        <h1 className="text-3xl">Equações do 1º Grau</h1>
+        <h1 className="text-3xl">Equações do 2º Grau</h1>
       </div>
       <div className="text-center p-10 text-3xl">
-        {`(${number1}X) + (${number2}) = (${number3}X)+ (${number4})`}
+        {`(${number1})X² + (${number2})X + (${number3}) = 0`}
         <div>
-          X =
+          X1 =
           <input
             className="w-24 text-center "
             onChange={handleChange}
             value={resp}
+          ></input>
+        </div>
+        <div>
+          X2 =
+          <input
+            className="w-24 text-center "
+            onChange={handleChange1}
+            value={resp1}
           ></input>
         </div>
       </div>
@@ -117,7 +123,7 @@ export default function Fracoes() {
       </button>
 
       <div className="text-center p-10 text-2xl">
-        <ResultsEqua Resultados={Resultados} />
+        <ResultsEqua2 Resultados={Resultados} />
       </div>
     </main>
   );

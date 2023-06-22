@@ -1,3 +1,4 @@
+import Fraction from "fraction.js";
 export const navLinks = [
   { label: "Home", path: "/" },
   { label: "Soma", path: "/soma" },
@@ -40,3 +41,18 @@ export const Permitidos = (event) => {
     event.preventDefault();
   }
 };
+
+export const eFracao = (resp, fract) => {
+  if (!Number.isInteger(resp)) {
+    const decimal = resp;
+    const fraction = decimalToFraction(decimal);
+    console.log(`${decimal} convertido para fração: ${fraction}`);
+    fract = fraction;
+    const RespEmFracao = fraction;
+    return RespEmFracao;
+  }
+};
+function decimalToFraction(decimal) {
+  const fraction = new Fraction(decimal);
+  return fraction.toFraction(true);
+}
