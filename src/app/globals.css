@@ -25,6 +25,51 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+/*exceções*/
+.divfrac{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-top: -1.5rem;
+  padding-top: -1rem;
+  padding-bottom: -2rem;
+  font-size: 1.875rem;
+     padding-left: 1rem;
+      padding-right: 1rem;
+      text-align: center;
+}
+/* Estilos para o container flexível */
+.fraction-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.875rem;
+}
+.respo{
+  font-size: 0.875rem;
+}
+
+
+/* Estilos para os inputs */
+.fraction-input-container input {
+  width: 80px;
+  border-radius: 4px;
+  padding: 6px;
+  text-align: center;
+}
+/* Estilos para os num */
+.fraction-num {
+  align-self: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Estilos para a barra entre os inputs */
+.fraction-input-container .fraction-bar {
+  border-top: 3px solid #000;
+  width: 40px;
+  margin: 0 12px;
+}
 /*Menu hamburger*/
 .checkbox-container {
   display: flex;

@@ -19,6 +19,12 @@ export const ButtonsLinks = [
   { label: "Equações do 2º Grau", path: "/equacoes2" },
 ];
 
+export const FracoesButtonsLinks = [
+  { label: "Soma", path: "/fracoes/soma" },
+  { label: "Subtração", path: "/fracoes/subtracao" },
+  { label: "Multiplicação", path: "/fracoes/multi" },
+  { label: "Divisão", path: "/fracoes/divisao" },
+];
 export const operators = ["+", "-", "x", "÷"];
 
 export const comparators = [">", "=", "<"];
