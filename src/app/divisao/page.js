@@ -71,7 +71,6 @@ export default function Soma() {
           className="w-24 text-center "
           onChange={handleChange}
           value={resp}
-          type="number"
         ></input>
       </div>
       <button

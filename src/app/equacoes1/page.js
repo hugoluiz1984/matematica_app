@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
 import Fraction from "fraction.js";
+import ResultsEqua from "@/components/ResultsEqua";
 
 export default function Fracoes() {
   const [expression, setExpression] = useState("");
@@ -31,12 +32,18 @@ export default function Fracoes() {
     const num2 = getRandomIntInclusive(1, 10);
     const num3 = getRandomIntInclusive(-10, 10);
     const num4 = getRandomIntInclusive(1, 10);
-    const operator = "+";
+    const operator = "=";
+    if (num1 == num3) {
+      setNumber3(num3 - 1);
+    } else {
+      setNumber3(num3);
+    }
     setNumber1(num1);
     setNumber2(num2);
-    setNumber3(num3);
     setNumber4(num4);
-    setExpression(`${num1 / num2} ${operator} ${num3 / num4}`);
+    setExpression(
+      `(${number1}X)+(${number2}) ${operator} (${number3}X)+(${number4})`
+    );
     setResp("");
   };
 
@@ -51,7 +58,7 @@ export default function Fracoes() {
 
   const verificar = () => {
     if (resp !== "") {
-      let val = number1 / number2 + number3 / number4;
+      let val = (number4 - number2) / (number1 - number3);
       let tempExp;
       let fract = 0;
       if (!Number.isInteger(val)) {
@@ -63,7 +70,7 @@ export default function Fracoes() {
       }
       console.log(`${val}`);
       tempExp = {
-        expression: `(${number1})/(${number2}) ÷ (${number3})/(${number4}) = ${val}`,
+        expression: `(${number1}X)+(${number2}) = (${number3}X)+(${number4})`,
         resp: resp,
         value: val.toString(),
       };
@@ -85,7 +92,7 @@ export default function Fracoes() {
         <h1 className="text-3xl">Equações do 1º Grau</h1>
       </div>
       <div className="text-center p-10 text-3xl">
-        {`(${number1})/${number2} + (${number3})/${number4} = `}
+        {`(${number1}X) + (${number2}) = (${number3}X)+ (${number4})`}
         <input
           className="w-24 text-center "
           onChange={handleChange}
@@ -100,16 +107,7 @@ export default function Fracoes() {
       </button>
 
       <div className="text-center p-10 text-2xl">
-        {Resultados.map((item, index) => {
-          return (
-            <div key={index} className="flex ">
-              <div className="p-1 w-100">{item.expression}</div>
-              <div className="p-1">
-                {item.value == item.resp ? " ✅" : " ❌"}
-              </div>
-            </div>
-          );
-        })}
+        <ResultsEqua Resultados={Resultados} />
       </div>
     </main>
   );

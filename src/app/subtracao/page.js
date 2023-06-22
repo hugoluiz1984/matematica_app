@@ -41,7 +41,7 @@ export default function Soma() {
 
   const verificar = () => {
     if (resp !== "") {
-      let val = number1 + number2;
+      let val = number1 - number2;
       let tempExp;
 
       tempExp = {
