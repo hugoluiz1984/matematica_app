@@ -98,7 +98,7 @@ export default function Fracoes() {
       <div>
         <h1 className="text-3xl">Equações do 1º Grau</h1>
       </div>
-      <div className="text-center p-10 text-3xl">
+      <div className="text-center p-10 text-2xl">
         {`(${number1}X) + (${number2}) = (${number3}X)+ (${number4})`}
         <div>
           X =
@@ -116,7 +116,7 @@ export default function Fracoes() {
         Verificar
       </button>
 
-      <div className="text-center p-10 text-2xl">
+      <div className="text-center p-10 text-xl">
         <ResultsEqua Resultados={Resultados} />
       </div>
     </main>
