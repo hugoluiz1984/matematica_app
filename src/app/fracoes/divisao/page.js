@@ -57,14 +57,11 @@ export default function Fracoes() {
     respNum != "" || respDen != "" ? setResp(respNum / respDen) : setResp("");
     if (resp !== "") {
       let val = (number1 * number4) / (number3 * number2);
-      let tempExp;
       let fract = 0;
       let newResp = 0;
       val = eFracao(val, fract);
-      console.log(val);
       newResp = eFracao(resp, fract);
-      console.log(`${val}`);
-      tempExp = {
+      const tempExp = {
         num1: number1,
         num2: number2,
         num3: number3,
@@ -74,9 +71,7 @@ export default function Fracoes() {
         resp: newResp,
         value: val,
       };
-
       Resultados.push(tempExp);
-      console.log(Resultados);
       getNum();
       setCont(cont + 1);
       setResp("");
