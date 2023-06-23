@@ -69,7 +69,7 @@ export default function Fracoes() {
         num2: number2,
         num3: number3,
         num4: number4,
-        operator: "x",
+        operator: "÷",
         expression: `(${number1})/${number2} ÷ (${number3})/${number4} = ${val}`,
         resp: newResp,
         value: val,
