@@ -64,6 +64,19 @@ body {
   width: 40px;
   margin: 0 12px;
 }
+/* Estilos para a barra entre soma */
+.Add-bar {
+  border-top: 3px solid #000;
+  width: 100px;
+  margin: 0 12px;
+}
+/* Estilos para Add num */
+.Add-num {
+  align-self: flex-end;
+  align-items: center;
+  text-align: center;
+  padding-right: 1.5rem;
+}
 /*Menu hamburger*/
 .checkbox-container {
   display: flex;

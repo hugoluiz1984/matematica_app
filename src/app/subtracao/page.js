@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
+import AddScreen from "@/components/AddScreen";
 //import { Button, Link } from "@nextui-org/react";
 
 export default function Soma() {
@@ -25,8 +26,8 @@ export default function Soma() {
   }, [cont]);
 
   const getNum = () => {
-    const num1 = getRandomIntInclusive(-999, 999);
-    const num2 = getRandomIntInclusive(-999, 999);
+    const num1 = getRandomIntInclusive(0, 999);
+    const num2 = getRandomIntInclusive(0, 999);
     const operator = "+";
 
     setNumber1(num1);
@@ -66,21 +67,19 @@ export default function Soma() {
       <div>
         <h1 className="text-3xl">Subtração</h1>
       </div>
-      <div className="text-center p-10 text-3xl">
-        {`(${number1}) - (${number2}) = `}
-        <input
-          className="w-24 text-center "
-          onChange={handleChange}
-          value={resp}
-        ></input>
-      </div>
+      <AddScreen
+        num1={number1}
+        num2={number2}
+        operator={"-"}
+        respNum={resp}
+        setRespNum={setResp}
+      />{" "}
       <button
         onClick={verificar}
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-0 rounded w-44"
       >
         Verificar
       </button>
-
       <div className="text-center py-10 text-2xl">
         {Resultados.map((item, index) => {
           return (
