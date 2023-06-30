@@ -30,13 +30,10 @@ export default function Soma() {
   const verificarNivel = () => {
     if (nivel === 0) {
       getNum(0, 9);
-      setResp("");
     } else if (nivel === 1) {
       getNum(0, 99);
-      setResp("");
     } else {
       getNum(0, 999);
-      setResp("");
     }
   };
 

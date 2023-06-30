@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
+import Level from "@/components/Level";
 //import { Button, Link } from "@nextui-org/react";
 
 export default function Soma() {
@@ -20,10 +21,23 @@ export default function Soma() {
       Resultados.splice(0, Resultados.length);
     };
   }, []);
+  useEffect(() => {
+    verificarNivel();
+  }, [nivel]);
 
   useEffect(() => {
     cont === 10 ? setResultsScreen(true) : setResultsScreen(false);
   }, [cont]);
+
+  const verificarNivel = () => {
+    if (nivel === 0) {
+      getNum(0, 9);
+    } else if (nivel === 1) {
+      getNum(-99, 99);
+    } else {
+      getNum(-999, 999);
+    }
+  };
 
   const getNum = (min, max) => {
     const num1 = getRandomIntInclusive(min, max);
@@ -53,9 +67,8 @@ export default function Soma() {
 
       Resultados.push(tempExp);
       console.log(Resultados);
-      getNum(0, 9);
+      verificarNivel();
       setCont(cont + 1);
-      setResp("");
     }
   };
   const handleChange = (e) => {
@@ -66,6 +79,7 @@ export default function Soma() {
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Multiplicação</h1>
+        <Level level={nivel} setLevel={setNivel} />
       </div>
       <div className="text-center p-10 text-3xl">
         {`(${number1}) x (${number2}) = `}
