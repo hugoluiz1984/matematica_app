@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
 import AddScreen from "@/components/AddScreen";
+import Level from "@/components/Level";
 //import { Button, Link } from "@nextui-org/react";
 
 export default function Soma() {
@@ -11,6 +12,7 @@ export default function Soma() {
   const [resp, setResp] = useState("");
   const [resultsScreen, setResultsScreen] = useState(false);
   const [cont, setCont] = useState(0);
+  const [nivel, setNivel] = useState([]);
 
   useEffect(() => {
     const Resultados = [];
@@ -63,6 +65,7 @@ export default function Soma() {
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Soma</h1>
+        <Level />
       </div>
       <AddScreen
         num1={number1}
