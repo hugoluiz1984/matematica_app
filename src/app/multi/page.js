@@ -10,10 +10,11 @@ export default function Soma() {
   const [resp, setResp] = useState("");
   const [resultsScreen, setResultsScreen] = useState(false);
   const [cont, setCont] = useState(0);
+  const [nivel, setNivel] = useState(0);
 
   useEffect(() => {
     const Resultados = [];
-    getNum();
+    getNum(0, 9);
 
     return () => {
       Resultados.splice(0, Resultados.length);
@@ -24,9 +25,9 @@ export default function Soma() {
     cont === 10 ? setResultsScreen(true) : setResultsScreen(false);
   }, [cont]);
 
-  const getNum = () => {
-    const num1 = getRandomIntInclusive(-20, 20);
-    const num2 = getRandomIntInclusive(-20, 20);
+  const getNum = (min, max) => {
+    const num1 = getRandomIntInclusive(min, max);
+    const num2 = getRandomIntInclusive(min, max);
     const operator = "x";
 
     setNumber1(num1);
@@ -52,7 +53,7 @@ export default function Soma() {
 
       Resultados.push(tempExp);
       console.log(Resultados);
-      getNum();
+      getNum(0, 9);
       setCont(cont + 1);
       setResp("");
     }

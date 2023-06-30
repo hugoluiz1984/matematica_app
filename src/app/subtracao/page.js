@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
 import AddScreen from "@/components/AddScreen";
 import Level from "@/components/Level";
+//import { Button, Link } from "@nextui-org/react";
 
 export default function Soma() {
   const [expression, setExpression] = useState("");
@@ -11,11 +12,11 @@ export default function Soma() {
   const [resp, setResp] = useState("");
   const [resultsScreen, setResultsScreen] = useState(false);
   const [cont, setCont] = useState(0);
-  const [nivel, setNivel] = useState([]);
+  const [nivel, setNivel] = useState(0);
 
   useEffect(() => {
     const Resultados = [];
-    getNum();
+    getNum(0, 9);
 
     return () => {
       Resultados.splice(0, Resultados.length);
@@ -23,13 +24,30 @@ export default function Soma() {
   }, []);
 
   useEffect(() => {
+    verificarNivel();
+  }, [nivel]);
+
+  const verificarNivel = () => {
+    if (nivel === 0) {
+      getNum(0, 9);
+      setResp("");
+    } else if (nivel === 1) {
+      getNum(0, 99);
+      setResp("");
+    } else {
+      getNum(0, 999);
+      setResp("");
+    }
+  };
+
+  useEffect(() => {
     cont === 10 ? setResultsScreen(true) : setResultsScreen(false);
   }, [cont]);
 
-  const getNum = () => {
-    const num1 = getRandomIntInclusive(0, 999);
-    const num2 = getRandomIntInclusive(0, 999);
-    const operator = "+";
+  const getNum = (min, max) => {
+    const num1 = getRandomIntInclusive(min, max);
+    const num2 = getRandomIntInclusive(min, max);
+    const operator = "-";
 
     setNumber1(num1);
     setNumber2(num2);
@@ -54,20 +72,15 @@ export default function Soma() {
 
       Resultados.push(tempExp);
       console.log(Resultados);
-      getNum();
-      setCont(cont + 1);
-      setResp("");
+      verificarNivel();
     }
-  };
-  const handleChange = (e) => {
-    setResp(e.target.value);
   };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Subtração</h1>
-        <Level />
+        <Level level={nivel} setLevel={setNivel} />
       </div>
       <AddScreen
         num1={number1}
@@ -82,13 +95,15 @@ export default function Soma() {
       >
         Verificar
       </button>
-      <div className="text-center py-10 text-2xl">
+      <div className="text-center p-10 text-2xl">
         {Resultados.map((item, index) => {
           return (
-            <ul key={index} className="flex ">
-              <li className="p-1 w-100">{item.expression}</li>
-              <li className="p-1">{item.value == item.resp ? " ✅" : " ❌"}</li>
-            </ul>
+            <div key={index} className="flex ">
+              <div className="p-1 w-100">{item.expression}</div>
+              <div className="p-1">
+                {item.value == item.resp ? " ✅" : " ❌"}
+              </div>
+            </div>
           );
         })}
       </div>
