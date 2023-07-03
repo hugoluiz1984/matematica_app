@@ -33,9 +33,9 @@ export default function Soma() {
     if (nivel === 0) {
       getNum(0, 9);
     } else if (nivel === 1) {
-      getNum(-99, 99);
+      getNum(-9, 9);
     } else {
-      getNum(-999, 999);
+      getNum(-30, 30);
     }
   };
 
@@ -79,7 +79,11 @@ export default function Soma() {
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Multiplicação</h1>
-        <Level level={nivel} setLevel={setNivel} />
+        <Level
+          level={nivel}
+          setLevel={setNivel}
+          verificarNivel={verificarNivel}
+        />
       </div>
       <div className="text-center p-10 text-3xl">
         {`(${number1}) x (${number2}) = `}

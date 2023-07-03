@@ -4,6 +4,7 @@ import { Resultados } from "@/utils/data";
 import Fraction from "fraction.js";
 import FracScreen from "@/components/FracScreen";
 import FracScreenResp from "@/components/FracScreenResp";
+import Level from "@/components/Level";
 
 export default function Fracoes() {
   const [expression, setExpression] = useState("");
@@ -95,11 +96,16 @@ export default function Fracoes() {
     }
     return resp;
   };
+  const verificarNivel = () => {
+    getNum();
+    setResp("");
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Subtração de Frações</h1>
+        <Level level={""} setLevel={""} verificarNivel={verificarNivel} />
       </div>
       <FracScreen
         num1={number1}

@@ -18,13 +18,14 @@ export default function RootLayout({ children }) {
         <main>
           <header className="bg-white-800 text-black py-4">
             <div className=" flex container mx-auto px-4 items-center justify-between">
-              <Image
-                src="/logo.png"
-                alt="Gama Logo"
-                width={100}
-                height={24}
-                priority
-              />
+              <a href="/">
+                <Image
+                  src="/logo.png"
+                  alt="Matemática Logo"
+                  width={100}
+                  height={24}
+                />
+              </a>
               <NavBar navLinks={navLinks} />
             </div>
           </header>

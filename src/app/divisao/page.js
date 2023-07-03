@@ -1,32 +1,47 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Resultados, Permitidos } from "@/utils/data";
+import { Resultados } from "@/utils/data";
+import Level from "@/components/Level";
 //import { Button, Link } from "@nextui-org/react";
 
-export default function Soma() {
+export default function Divisao() {
   const [expression, setExpression] = useState("");
   const [number1, setNumber1] = useState(0);
   const [number2, setNumber2] = useState(0);
   const [resp, setResp] = useState("");
   const [resultsScreen, setResultsScreen] = useState(false);
   const [cont, setCont] = useState(0);
+  const [nivel, setNivel] = useState(0);
 
   useEffect(() => {
     const Resultados = [];
-    getNum();
+    getNum(0, 9);
 
     return () => {
       Resultados.splice(0, Resultados.length);
     };
   }, []);
+  useEffect(() => {
+    verificarNivel();
+  }, [nivel]);
 
   useEffect(() => {
     cont === 10 ? setResultsScreen(true) : setResultsScreen(false);
   }, [cont]);
 
-  const getNum = () => {
-    const num1 = getRandomIntInclusive(-20, 20);
-    const num2 = getRandomIntInclusive(-20, 20);
+  const verificarNivel = () => {
+    if (nivel === 0) {
+      getNum(0, 9);
+    } else if (nivel === 1) {
+      getNum(-9, 9);
+    } else {
+      getNum(-29, 29);
+    }
+  };
+
+  const getNum = (min, max) => {
+    const num1 = getRandomIntInclusive(min, max);
+    const num2 = getRandomIntInclusive(min, max);
     const operator = "÷";
     num1 != 0 ? setNumber1(num1) : setNumber1(1);
     setNumber2(num2);
@@ -51,9 +66,8 @@ export default function Soma() {
 
       Resultados.push(tempExp);
       console.log(Resultados);
-      getNum();
+      verificarNivel();
       setCont(cont + 1);
-      setResp("");
     }
   };
   const handleChange = (e) => {
@@ -64,6 +78,11 @@ export default function Soma() {
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Divisão</h1>
+        <Level
+          level={nivel}
+          setLevel={setNivel}
+          verificarNivel={verificarNivel}
+        />
       </div>
       <div className="text-center p-10 text-3xl">
         {`(${number1 * number2}) ÷ (${number1}) = `}

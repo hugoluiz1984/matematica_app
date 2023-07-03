@@ -4,6 +4,7 @@ import { Resultados } from "@/utils/data";
 import Fraction from "fraction.js";
 import ResultsEqua2 from "@/components/ResultsEqua2";
 import { equa2 } from "@/utils/equacao2grau";
+import Level from "@/components/Level";
 
 export default function Fracoes() {
   const [expression, setExpression] = useState("");
@@ -91,11 +92,16 @@ export default function Fracoes() {
   const handleChange1 = (e) => {
     setResp1(e.target.value);
   };
+  const verificarNivel = () => {
+    getNum();
+    setResp("");
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Equações do 2º Grau</h1>
+        <Level level={""} setLevel={""} verificarNivel={verificarNivel} />
       </div>
       <div className="text-center p-10 text-xl">
         {`(${number1})X² + (${number2})X + (${number3}) = 0`}

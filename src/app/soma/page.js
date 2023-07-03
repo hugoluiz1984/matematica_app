@@ -80,7 +80,11 @@ export default function Soma() {
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Soma</h1>
-        <Level level={nivel} setLevel={setNivel} />
+        <Level
+          level={nivel}
+          setLevel={setNivel}
+          verificarNivel={verificarNivel}
+        />
       </div>
       <AddScreen
         num1={number1}

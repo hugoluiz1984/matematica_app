@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Resultados } from "@/utils/data";
 import Fraction from "fraction.js";
 import ResultsEqua from "@/components/ResultsEqua";
+import Level from "@/components/Level";
 
 export default function Fracoes() {
   const [expression, setExpression] = useState("");
@@ -92,11 +93,16 @@ export default function Fracoes() {
   const handleChange = (e) => {
     setResp(e.target.value);
   };
+  const verificarNivel = () => {
+    getNum();
+    setResp("");
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div>
         <h1 className="text-3xl">Equações do 1º Grau</h1>
+        <Level level={""} setLevel={""} verificarNivel={verificarNivel} />
       </div>
       <div className="text-center p-10 text-2xl">
         {`(${number1}X) + (${number2}) = (${number3}X)+ (${number4})`}
