@@ -37,10 +37,11 @@ export default function Fracoes() {
     const num3 = getRandomIntInclusive(-10, 10);
     const num4 = getRandomIntInclusive(1, 10);
     const operator = "0";
-    setNumber1(num1);
+    num1 === 0 ? setNumber1(1) : setNumber1(num1);
     setNumber2(num2);
-    setNumber3(num3);
+    num3 === 0 ? setNumber3(1) : setNumber3(num3);
     setNumber4(num4);
+
     setExpression(`${num1 / num2} ${operator} ${num3 / num4}`);
     setResp("");
   };
